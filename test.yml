@@ -1,5 +1,5 @@
 ---
-apiVersion: apps/v1 #ee
+apiVersion: apps/v1 #eesd
 kind: Deployment
 metadata:
   name: nginxtestjenkins
