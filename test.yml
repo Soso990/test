@@ -37,5 +37,5 @@ spec:
     protocol: TCP
     targetPort: 8082
   selector:
-    app: nginx
+    app: nginxtestjenkins
   type: LoadBalancer
