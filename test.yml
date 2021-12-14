@@ -2,32 +2,32 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2ssdsdsxddxdsddfddsdsddsdfsdasdf
 kind: Deployment
 metadata:
-  name: nginx
+  name: httpd
 spec:
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: apache2
+      app: httpd
   replicas: 3 # tells deployment to run 1 pods matching the templates
   template: # create pods using pod definition in this template
     metadata:
       labels:
-        app: apache2
+        app: httpd
     spec:
       containers:
-      - name: apache2
-        image: apache2
+      - name: httpd
+        image: httpd
         ports:
         - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: apache2
+  name: httpd
   namespace: default
   labels:
-    app: apache2
+    app: httpd
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
 spec:
@@ -38,5 +38,5 @@ spec:
     protocol: TCP
     targetPort: 8099
   selector:
-    app: apache2
+    app: httpd
   type: LoadBalancer
